@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input.html">
 
 <dom-module id="ids-formulario">
   <template>
@@ -7,26 +8,53 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]!</h2>
+    [[nombre]]
+    <paper-input
+        value="{{nombre}}"
+        always-float-label label="Nombre Completo"
+        auto-validate
+        type="text"
+        pattern="[A-Za-z]*"></paper-input>
+    [[telefono_personal]]
+    <paper-input 
+        value="{{telefono_personal}}"
+        always-float-label label="Telefono Personal" 
+        pattern="\d{10}" 
+        auto-validate
+        type="tel"></paper-input>
+    [[telefono_oficina]]
+    <paper-input 
+        value="{{telefono_oficina}}"
+        always-float-label label="Telefono Oficina" 
+        pattern="\d{10}" 
+        auto-validate
+        type="tel"></paper-input>
+    [[email_personal]]
+    <paper-input
+        value="{{email_personal}}"
+        always-float-label label="Email personal" 
+        pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" 
+        auto-validate
+        type="email"></paper-input>
+    [[email_oficina]]
+    <paper-input
+        value="{{email_oficina}}"
+        always-float-label label="Email oficina" 
+        pattern="^[^@]+@[^@]+\.[a-zA-Z]{2,}$" 
+        auto-validate
+        type="email"></paper-input>
   </template>
 
   <script>
-    /**
-     * `ids-formulario`
-     * proyecto de formulario con paper-input y paper-buttom
-     *
-     * @customElement
-     * @polymer
-     * @demo demo/index.html
-     */
     class IdsFormulario extends Polymer.Element {
       static get is() { return 'ids-formulario'; }
       static get properties() {
         return {
-          prop1: {
-            type: String,
-            value: 'ids-formulario'
-          }
+          nombre: String,
+          telefono_personal: Number,
+          telefono_oficina: Number,
+          email_personal: String,
+          email_oficina: String
         };
       }
     }
